@@ -1,10 +1,18 @@
-import { useEffect, useRef, useState, type ComponentType } from "react";
+import { useEffect, useRef, useState, type ComponentType, type CSSProperties } from "react";
 import { Download, MessageCircle, Send, Mail } from "lucide-react";
 import { contact } from "../../data/projects";
 
 // lucide-react dropped brand/logo icons, so LinkedIn gets a small inline glyph
 // that matches the same size/className API as the lucide icons around it.
-function LinkedinIcon({ size = 18, className = "" }: { size?: number; className?: string }) {
+function LinkedinIcon({
+  size = 18,
+  className = "",
+  style,
+}: {
+  size?: number;
+  className?: string;
+  style?: CSSProperties;
+}) {
   return (
     <svg
       width={size}
@@ -12,6 +20,7 @@ function LinkedinIcon({ size = 18, className = "" }: { size?: number; className?
       viewBox="0 0 24 24"
       fill="currentColor"
       className={className}
+      style={style}
       aria-hidden="true"
     >
       <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z" />
@@ -30,7 +39,7 @@ const VB_H = 380;
 const CX = 350;
 const CY = 190;
 
-type IconComponent = ComponentType<{ size?: number; className?: string }>;
+type IconComponent = ComponentType<{ size?: number; className?: string; style?: CSSProperties }>;
 
 interface NodeDef {
   id: string;
