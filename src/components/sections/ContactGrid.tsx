@@ -188,16 +188,16 @@ export default function ContactGrid() {
               top: `${(node.y / VB_H) * 100}%`,
               transform: `translate(-50%, -50%) ${isActive ? "scale(1.25)" : "scale(1)"}`,
               background: "radial-gradient(circle at 35% 30%, #0a1830, #050b16)",
-              borderColor: isActive ? node.color : "rgba(10,108,255,0.35)",
+              borderColor: `rgba(${r},${g},${b},${isActive ? 0.9 : 0.55})`,
               boxShadow: isActive
-                ? `0 0 26px 6px rgba(${r},${g},${b},0.5)`
-                : "0 0 10px 1px rgba(10,108,255,0.12)",
+                ? `0 0 26px 6px rgba(${r},${g},${b},0.55)`
+                : `0 0 12px 2px rgba(${r},${g},${b},0.25)`,
             }}
           >
-            <Icon size={18} className="transition-colors text-text-secondary" style={{ color: isActive ? node.color : undefined }} />
+            <Icon size={18} className="transition-colors" style={{ color: node.color }} />
             <span
-              className="font-mono text-[8px] uppercase tracking-wider transition-colors text-text-secondary"
-              style={{ color: isActive ? node.color : undefined }}
+              className="font-mono text-[8px] uppercase tracking-wider transition-colors"
+              style={{ color: node.color }}
             >
               {node.label}
             </span>
