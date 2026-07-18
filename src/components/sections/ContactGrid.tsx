@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState, type ComponentType, type CSSProperties } from "react";
-import { Download, MessageCircle, Send, Mail } from "lucide-react";
+import { Download, Mail } from "lucide-react";
 import { contact } from "../../data/projects";
 
-// lucide-react dropped brand/logo icons, so LinkedIn gets a small inline glyph
-// that matches the same size/className API as the lucide icons around it.
+// lucide-react dropped brand/logo icons, so LinkedIn, WhatsApp, and Telegram get
+// small inline glyphs that match the same size/className/style API as lucide icons.
 function LinkedinIcon({
   size = 18,
   className = "",
@@ -24,6 +24,55 @@ function LinkedinIcon({
       aria-hidden="true"
     >
       <path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-.95 1.83-1.95 3.77-1.95 4.03 0 4.78 2.5 4.78 5.75V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.96V21H9z" />
+    </svg>
+  );
+}
+
+function WhatsappIcon({
+  size = 18,
+  className = "",
+  style,
+}: {
+  size?: number;
+  className?: string;
+  style?: CSSProperties;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      style={style}
+      aria-hidden="true"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.1-.472-.149-.67.15-.198.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347z" />
+      <path d="M12.004 2C6.486 2 2.01 6.477 2.01 12c0 1.885.52 3.65 1.423 5.159L2 22l4.976-1.393A9.94 9.94 0 0 0 12.004 22C17.522 22 22 17.523 22 12S17.522 2 12.004 2zm0 18.062a8.03 8.03 0 0 1-4.098-1.123l-.294-.175-3.043.852.83-3.02-.192-.303a8.03 8.03 0 0 1-1.226-4.293c0-4.453 3.626-8.078 8.083-8.078 4.456 0 8.082 3.625 8.082 8.078 0 4.454-3.626 8.062-8.142 8.062z" />
+    </svg>
+  );
+}
+
+function TelegramIcon({
+  size = 18,
+  className = "",
+  style,
+}: {
+  size?: number;
+  className?: string;
+  style?: CSSProperties;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      className={className}
+      style={style}
+      aria-hidden="true"
+    >
+      <path d="M21.426 2.574a1.573 1.573 0 0 0-1.634-.293L2.15 9.313a1.478 1.478 0 0 0 .105 2.767l4.463 1.462 1.714 5.476a.982.982 0 0 0 1.6.443l2.474-2.202 4.336 3.2a1.474 1.474 0 0 0 2.32-.908l3.02-14.516a1.573 1.573 0 0 0-.756-1.461ZM8.9 13.05l9.062-6.71-7.13 7.51-.31 3.24-1.622-4.04Z" />
     </svg>
   );
 }
@@ -51,14 +100,15 @@ interface NodeDef {
   external?: boolean;
   download?: boolean;
   color: string;
+  filled?: boolean;
 }
 
 const NODES: NodeDef[] = [
-  { id: "cv", label: "Download CV", href: contact.cv, icon: Download, x: 120, y: 70, download: true, color: "#3da9ff" },
-  { id: "linkedin", label: "LinkedIn", href: contact.linkedin, icon: LinkedinIcon, x: 580, y: 70, external: true, color: "#0A66C2" },
-  { id: "whatsapp", label: "WhatsApp", href: contact.whatsapp, icon: MessageCircle, x: 640, y: 260, external: true, color: "#25D366" },
-  { id: "telegram", label: "Telegram", href: contact.telegram, icon: Send, x: 350, y: 340, external: true, color: "#26A5E4" },
-  { id: "email", label: "Email", href: `mailto:${contact.email}`, icon: Mail, x: 60, y: 260, color: "#EA4335" },
+  { id: "cv", label: "Download CV", href: contact.cv, icon: Download, x: 120, y: 70, download: true, color: "#8B5CF6" },
+  { id: "linkedin", label: "LinkedIn", href: contact.linkedin, icon: LinkedinIcon, x: 580, y: 70, external: true, color: "#0A66C2", filled: true },
+  { id: "whatsapp", label: "WhatsApp", href: contact.whatsapp, icon: WhatsappIcon, x: 640, y: 260, external: true, color: "#25D366", filled: true },
+  { id: "telegram", label: "Telegram", href: contact.telegram, icon: TelegramIcon, x: 350, y: 340, external: true, color: "#26A5E4", filled: true },
+  { id: "email", label: "Email", href: `mailto:${contact.email}`, icon: Mail, x: 60, y: 260, color: "#3da9ff" },
 ];
 
 function elbowPath(x: number, y: number): [number, number][] {
@@ -187,17 +237,19 @@ export default function ContactGrid() {
               left: `${(node.x / VB_W) * 100}%`,
               top: `${(node.y / VB_H) * 100}%`,
               transform: `translate(-50%, -50%) ${isActive ? "scale(1.25)" : "scale(1)"}`,
-              background: "radial-gradient(circle at 35% 30%, #0a1830, #050b16)",
+              background: node.filled
+                ? `radial-gradient(circle at 35% 30%, ${node.color}, rgba(${r},${g},${b},0.85))`
+                : "radial-gradient(circle at 35% 30%, #0a1830, #050b16)",
               borderColor: `rgba(${r},${g},${b},${isActive ? 0.9 : 0.55})`,
               boxShadow: isActive
                 ? `0 0 26px 6px rgba(${r},${g},${b},0.55)`
                 : `0 0 12px 2px rgba(${r},${g},${b},0.25)`,
             }}
           >
-            <Icon size={18} className="transition-colors" style={{ color: node.color }} />
+            <Icon size={18} className="transition-colors" style={{ color: node.filled ? "#fff" : node.color }} />
             <span
               className="font-mono text-[8px] uppercase tracking-wider transition-colors"
-              style={{ color: node.color }}
+              style={{ color: node.filled ? "#fff" : node.color }}
             >
               {node.label}
             </span>
