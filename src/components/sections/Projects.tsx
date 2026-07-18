@@ -2,6 +2,7 @@ import { useInView } from "../../hooks/useInView";
 import { projects, type Project } from "../../data/projects";
 import Badge from "../ui/Badge";
 import Panel from "../ui/Panel";
+import { Check } from "lucide-react";
 
 function ProjectCard({ project, reverse }: { project: Project; reverse: boolean }) {
   const { ref, inView } = useInView<HTMLDivElement>(0.15);
@@ -43,6 +44,15 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
         <h3 className="font-display text-2xl md:text-3xl font-semibold mb-2">{project.name}</h3>
         <p className="text-text-secondary text-sm mb-4">{project.tag}</p>
         <p className="text-text-secondary leading-relaxed mb-6">{project.description}</p>
+
+        <ul className="space-y-2 mb-6">
+          {project.highlights.map((point) => (
+            <li key={point} className="flex items-start gap-2.5 text-sm text-text-secondary">
+              <Check className="w-4 h-4 mt-0.5 shrink-0 text-primary-bright" strokeWidth={2.5} />
+              <span>{point}</span>
+            </li>
+          ))}
+        </ul>
 
         <div className="flex flex-wrap gap-2 mb-6">
           {project.stack.map((tech) => (
