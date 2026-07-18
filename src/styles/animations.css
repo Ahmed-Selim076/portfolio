@@ -1,0 +1,125 @@
+/* ---- Typing cursor (role text in hero) ---- */
+.typing-cursor {
+  display: inline-block;
+  width: 2px;
+  margin-left: 2px;
+  background: var(--primary-bright);
+  animation: blink 1s step-start infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ---- Scroll indicator ---- */
+@keyframes bounce-arrow {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+.scroll-indicator {
+  animation: bounce-arrow 2s ease-in-out infinite;
+}
+
+/* ---- Fade up / left / right entrance (toggled via IntersectionObserver) ---- */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-up.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-left {
+  opacity: 0;
+  transform: translateX(-32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-left.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.fade-right {
+  opacity: 0;
+  transform: translateX(32px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.fade-right.is-visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ---- Chip power-on flicker (hero name) ---- */
+@keyframes power-on {
+  0% { opacity: 0; filter: brightness(3) blur(4px); }
+  8% { opacity: 1; filter: brightness(4) blur(0); }
+  10% { opacity: 0.3; filter: brightness(1) blur(1px); }
+  14% { opacity: 1; filter: brightness(3) blur(0); }
+  16% { opacity: 0.5; }
+  20% { opacity: 1; filter: brightness(1) blur(0); }
+  100% { opacity: 1; filter: brightness(1) blur(0); }
+}
+.power-on {
+  animation: power-on 1.6s ease-out both;
+}
+
+/* ---- Traveling pulse along an SVG trace path ---- */
+@keyframes trace-pulse {
+  0% { stroke-dashoffset: 240; opacity: 0; }
+  8% { opacity: 1; }
+  92% { opacity: 1; }
+  100% { stroke-dashoffset: 0; opacity: 0; }
+}
+.trace-pulse {
+  stroke-dasharray: 6 234;
+  animation: trace-pulse linear infinite;
+}
+
+/* ---- Success burst (contact form) ---- */
+@keyframes burst {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.success-burst {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px solid var(--primary-bright);
+  animation: burst 0.8s ease-out forwards;
+}
+
+/* ---- Ambient glow pulse for chip core / pins ---- */
+@keyframes core-pulse {
+  0%, 100% { box-shadow: 0 0 20px 2px var(--primary-glow); }
+  50% { box-shadow: 0 0 36px 6px var(--primary-glow); }
+}
+.core-pulse {
+  animation: core-pulse 3.5s ease-in-out infinite;
+}
+
+/* ---- Splash screen chip pulse ---- */
+@keyframes splash-pulse {
+  0%, 100% { opacity: 0.6; transform: rotate(45deg) scale(0.94); }
+  50% { opacity: 1; transform: rotate(45deg) scale(1); }
+}
+.splash-chip {
+  animation: splash-pulse 1.4s ease-in-out infinite;
+}

@@ -1,0 +1,80 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #020409;
+  --surface: rgba(5, 11, 22, 0.88);
+  --border: #1b3054;
+  --primary: #0a6cff;
+  --primary-bright: #3da9ff;
+  --electric: #00d9ff;
+  --primary-dim: rgba(10, 108, 255, 0.18);
+  --primary-glow: rgba(61, 169, 255, 0.6);
+  --text-primary: #eef4fc;
+  --text-secondary: #7c93b5;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-primary);
+  font-family: "Inter", sans-serif;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+  font-family: "Space Grotesk", sans-serif;
+  margin: 0;
+}
+
+::selection {
+  background: var(--primary-dim);
+  color: var(--primary-bright);
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-dim);
+}
+
+.text-glow {
+  text-shadow: 0 0 30px var(--primary-glow), 0 0 60px rgba(0, 217, 255, 0.25);
+}
+
+.focus-ring:focus-visible {
+  outline: 2px solid var(--primary-bright);
+  outline-offset: 3px;
+}
+
+/* Faint dot-grid, like solder-mask silkscreen dots on a PCB */
+.pcb-dots {
+  background-image: radial-gradient(rgba(61, 169, 255, 0.3) 1px, transparent 1px);
+  background-size: 22px 22px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
