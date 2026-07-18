@@ -58,7 +58,7 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
               rel="noreferrer"
               className="text-primary-bright hover:text-glow transition"
             >
-              Live Demo ↗
+              Live Demo &#8599;
             </a>
           )}
           {project.github && (
@@ -68,7 +68,7 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
               rel="noreferrer"
               className="text-text-secondary hover:text-text-primary transition"
             >
-              GitHub ↗
+              GitHub &#8599;
             </a>
           )}
         </div>
