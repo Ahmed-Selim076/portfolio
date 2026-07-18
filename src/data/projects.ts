@@ -3,6 +3,7 @@ export interface Project {
   name: string;
   tag: string;
   description: string;
+  highlights: string[];
   stack: string[];
   live?: string;
   github?: string;
@@ -13,9 +14,15 @@ export const projects: Project[] = [
   {
     number: "01",
     name: "Nexus",
-    tag: "Project Management Tool",
+    tag: "Project Management Platform",
     description:
-      "A full-stack platform for teams — Kanban boards, task tracking, real-time notifications, threaded comments, and analytics.",
+      "A Jira-style workspace built solo, end to end — from database schema to deployed UI. Teams organize work on Kanban boards, track progress in real time, and keep every conversation attached to the task it belongs to.",
+    highlights: [
+      "JWT + refresh-token auth with Google OAuth sign-in",
+      "Real-time notifications and threaded task comments",
+      "Drag-and-drop Kanban boards with live status sync",
+      "Analytics dashboard tracking team velocity and overdue work",
+    ],
     stack: ["React", "TanStack", "ASP.NET Core", "PostgreSQL", "JWT"],
     live: "https://nexus.t9am-w0rk.workers.dev/",
     github: "https://github.com/Ahmed-Selim076/nexus-frontend",
@@ -26,7 +33,13 @@ export const projects: Project[] = [
     name: "Launchly",
     tag: "Multi-Tenant SaaS Store Builder",
     description:
-      "A Shopify-like platform where businesses sign up, pick a store type (E-commerce, Booking, or Restaurant), and get their own subdomain with a fully functional storefront and admin dashboard.",
+      "A Shopify-style platform where any business signs up and gets a fully working storefront — E-commerce, Booking, or Restaurant — in minutes. Every tenant's data is completely isolated at the database layer, not just the UI.",
+    highlights: [
+      "True multi-tenancy via EF Core global query filters — zero data leakage between tenants",
+      "9 live storefronts across 3 store types × 3 templates",
+      "Super Admin, Tenant Admin, and Customer role tiers with scoped permissions",
+      "Cloudinary image pipeline and full audit logging on tenant actions",
+    ],
     stack: ["Angular", "ASP.NET Core", "PostgreSQL", "Multi-tenancy"],
     github: "https://github.com/Ahmed-Selim076/Launchly.Frontend",
     image: "/images/launchly.png",
@@ -36,7 +49,13 @@ export const projects: Project[] = [
     name: "Slate",
     tag: "Real-time Collaborative Whiteboard",
     description:
-      "Draw, brainstorm, and build together — live. Multiple users on the same infinite canvas with live cursors, sticky notes, and real-time sync.",
+      "A live multiplayer canvas where a team sketches, plans, and thinks together in the same space at the same time — built on SignalR WebSockets for sub-second sync, not polling.",
+    highlights: [
+      "Live multi-user cursors and presence over SignalR",
+      "Infinite pan/zoom canvas with auto-save",
+      "Built-in real-time Chess and card-game modes on the same socket layer",
+      "Conflict-free sync tested with multiple concurrent editors",
+    ],
     stack: ["React", "ASP.NET Core", "SignalR", "PostgreSQL", "Canvas API"],
     github: "https://github.com/Ahmed-Selim076/Slate.Frontend",
     image: "/images/slate.png",
