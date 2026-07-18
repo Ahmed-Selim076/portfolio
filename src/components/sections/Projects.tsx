@@ -52,7 +52,7 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
 
         <div className="flex gap-6 text-sm font-medium">
           {project.live && (
-            
+            <a
               href={project.live}
               target="_blank"
               rel="noreferrer"
@@ -62,7 +62,7 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
             </a>
           )}
           {project.github && (
-            
+            <a
               href={project.github}
               target="_blank"
               rel="noreferrer"
