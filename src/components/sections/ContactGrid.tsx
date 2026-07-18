@@ -19,6 +19,12 @@ function LinkedinIcon({ size = 18, className = "" }: { size?: number; className?
   );
 }
 
+function hexToRgb(hex: string): [number, number, number] {
+  const clean = hex.replace("#", "");
+  const bigint = parseInt(clean, 16);
+  return [(bigint >> 16) & 255, (bigint >> 8) & 255, bigint & 255];
+}
+
 const VB_W = 700;
 const VB_H = 380;
 const CX = 350;
@@ -35,14 +41,15 @@ interface NodeDef {
   y: number;
   external?: boolean;
   download?: boolean;
+  color: string;
 }
 
 const NODES: NodeDef[] = [
-  { id: "cv", label: "Download CV", href: contact.cv, icon: Download, x: 120, y: 70, download: true },
-  { id: "linkedin", label: "LinkedIn", href: contact.linkedin, icon: LinkedinIcon, x: 580, y: 70, external: true },
-  { id: "whatsapp", label: "WhatsApp", href: contact.whatsapp, icon: MessageCircle, x: 640, y: 260, external: true },
-  { id: "telegram", label: "Telegram", href: contact.telegram, icon: Send, x: 350, y: 340, external: true },
-  { id: "email", label: "Email", href: `mailto:${contact.email}`, icon: Mail, x: 60, y: 260 },
+  { id: "cv", label: "Download CV", href: contact.cv, icon: Download, x: 120, y: 70, download: true, color: "#3da9ff" },
+  { id: "linkedin", label: "LinkedIn", href: contact.linkedin, icon: LinkedinIcon, x: 580, y: 70, external: true, color: "#0A66C2" },
+  { id: "whatsapp", label: "WhatsApp", href: contact.whatsapp, icon: MessageCircle, x: 640, y: 260, external: true, color: "#25D366" },
+  { id: "telegram", label: "Telegram", href: contact.telegram, icon: Send, x: 350, y: 340, external: true, color: "#26A5E4" },
+  { id: "email", label: "Email", href: `mailto:${contact.email}`, icon: Mail, x: 60, y: 260, color: "#EA4335" },
 ];
 
 function elbowPath(x: number, y: number): [number, number][] {
@@ -94,7 +101,7 @@ export default function ContactGrid() {
 
     const state = NODES.map((n) => {
       const path = elbowPath(n.x, n.y);
-      return { id: n.id, path, len: pathLength(path), pulse: Math.random(), surge: 0 };
+      return { id: n.id, path, len: pathLength(path), pulse: Math.random(), surge: 0, rgb: hexToRgb(n.color) };
     });
 
     let frame: number;
@@ -119,7 +126,8 @@ export default function ContactGrid() {
 
         const glowR = 6 + s.surge * 9;
         const grad = ctx.createRadialGradient(px, py, 0, px, py, glowR);
-        const core = s.surge > 0.05 ? "rgba(0,217,255," : "rgba(61,169,255,";
+        const [r, g, b] = s.rgb;
+        const core = s.surge > 0.05 ? `rgba(${r},${g},${b},` : "rgba(61,169,255,";
         grad.addColorStop(0, core + "0.95)");
         grad.addColorStop(1, core + "0)");
         ctx.fillStyle = grad;
@@ -155,6 +163,7 @@ export default function ContactGrid() {
       {NODES.map((node) => {
         const Icon = node.icon;
         const isActive = active === node.id;
+        const [r, g, b] = hexToRgb(node.color);
         return (
           <a
             key={node.id}
@@ -164,23 +173,22 @@ export default function ContactGrid() {
             download={node.download}
             onMouseEnter={() => setActive(node.id)}
             onMouseLeave={() => setActive(null)}
-            className={`absolute w-14 h-14 md:w-16 md:h-16 rounded-full flex flex-col items-center justify-center gap-1 border transition-all duration-300 ${
-              isActive
-                ? "border-electric shadow-[0_0_26px_6px_rgba(0,217,255,0.5)] scale-125"
-                : "border-primary/35 shadow-[0_0_10px_1px_rgba(10,108,255,0.12)]"
-            }`}
+            className="absolute w-14 h-14 md:w-16 md:h-16 rounded-full flex flex-col items-center justify-center gap-1 border transition-all duration-300"
             style={{
               left: `${(node.x / VB_W) * 100}%`,
               top: `${(node.y / VB_H) * 100}%`,
               transform: `translate(-50%, -50%) ${isActive ? "scale(1.25)" : "scale(1)"}`,
               background: "radial-gradient(circle at 35% 30%, #0a1830, #050b16)",
+              borderColor: isActive ? node.color : "rgba(10,108,255,0.35)",
+              boxShadow: isActive
+                ? `0 0 26px 6px rgba(${r},${g},${b},0.5)`
+                : "0 0 10px 1px rgba(10,108,255,0.12)",
             }}
           >
-            <Icon size={18} className={isActive ? "text-electric" : "text-text-secondary"} />
+            <Icon size={18} className="transition-colors text-text-secondary" style={{ color: isActive ? node.color : undefined }} />
             <span
-              className={`font-mono text-[8px] uppercase tracking-wider ${
-                isActive ? "text-electric" : "text-text-secondary"
-              }`}
+              className="font-mono text-[8px] uppercase tracking-wider transition-colors text-text-secondary"
+              style={{ color: isActive ? node.color : undefined }}
             >
               {node.label}
             </span>
