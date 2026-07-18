@@ -19,7 +19,7 @@ export const projects: Project[] = [
     stack: ["React", "TanStack", "ASP.NET Core", "PostgreSQL", "JWT"],
     live: "https://nexus.t9am-w0rk.workers.dev/",
     github: "https://github.com/Ahmed-Selim076/nexus-frontend",
-    image: "/images/projects/nexus.png",
+    image: "/images/nexus.png",
   },
   {
     number: "02",
@@ -29,7 +29,7 @@ export const projects: Project[] = [
       "A Shopify-like platform where businesses sign up, pick a store type (E-commerce, Booking, or Restaurant), and get their own subdomain with a fully functional storefront and admin dashboard.",
     stack: ["Angular", "ASP.NET Core", "PostgreSQL", "Multi-tenancy"],
     github: "https://github.com/Ahmed-Selim076/Launchly.Frontend",
-    image: "/images/projects/launchly.png",
+    image: "/images/launchly.png",
   },
   {
     number: "03",
@@ -39,7 +39,7 @@ export const projects: Project[] = [
       "Draw, brainstorm, and build together — live. Multiple users on the same infinite canvas with live cursors, sticky notes, and real-time sync.",
     stack: ["React", "ASP.NET Core", "SignalR", "PostgreSQL", "Canvas API"],
     github: "https://github.com/Ahmed-Selim076/Slate.Frontend",
-    image: "/images/projects/slate.png",
+    image: "/images/slate.png",
   },
 ];
 
