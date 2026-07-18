@@ -14,11 +14,20 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
       <div className={reverse ? "md:order-2" : ""}>
         <Panel tilt>
           <div className="aspect-video bg-surface flex items-center justify-center overflow-hidden">
-            <div className="w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-primary-bright/10 flex items-center justify-center">
-              <span className="font-mono text-text-secondary text-sm">
-                {project.name} preview
-              </span>
-            </div>
+            {project.image ? (
+              <img
+                src={project.image}
+                alt={`${project.name} preview`}
+                className="w-full h-full object-cover object-top"
+                loading="lazy"
+              />
+            ) : (
+              <div className="w-full h-full bg-gradient-to-br from-primary/10 via-transparent to-primary-bright/10 flex items-center justify-center">
+                <span className="font-mono text-text-secondary text-sm">
+                  {project.name} preview
+                </span>
+              </div>
+            )}
           </div>
         </Panel>
       </div>
@@ -43,7 +52,7 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
 
         <div className="flex gap-6 text-sm font-medium">
           {project.live && (
-            <a
+            
               href={project.live}
               target="_blank"
               rel="noreferrer"
@@ -53,7 +62,7 @@ function ProjectCard({ project, reverse }: { project: Project; reverse: boolean 
             </a>
           )}
           {project.github && (
-            <a
+            
               href={project.github}
               target="_blank"
               rel="noreferrer"
