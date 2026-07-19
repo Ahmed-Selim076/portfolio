@@ -146,8 +146,8 @@ export const contact = {
   linkedinLabel: "/in/ahmed-selim112",
   github: "https://github.com/Ahmed-Selim076",
   githubLabel: "/Ahmed-Selim076",
-  // Placeholders — swap in the real number/username before deploying.
-  whatsapp: "https://wa.me/201000000000",
-  telegram: "https://t.me/your_username",
+  // WhatsApp + Telegram both resolve via the real phone number.
+  whatsapp: "https://wa.me/201021399112",
+  telegram: "https://t.me/+201021399112",
   cv: "/Ahmed_Selim_CV.pdf",
 };
