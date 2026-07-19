@@ -225,7 +225,7 @@ export default function ContactGrid() {
         const [r, g, b] = hexToRgb(node.color);
         const rgb = `${r},${g},${b}`;
         return (
-          
+          <a
             key={node.id}
             href={node.href}
             target={node.external ? "_blank" : undefined}
