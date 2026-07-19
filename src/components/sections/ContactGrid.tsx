@@ -223,8 +223,9 @@ export default function ContactGrid() {
         const Icon = node.icon;
         const isActive = active === node.id;
         const [r, g, b] = hexToRgb(node.color);
+        const rgb = `${r},${g},${b}`;
         return (
-          <a
+          
             key={node.id}
             href={node.href}
             target={node.external ? "_blank" : undefined}
@@ -236,20 +237,20 @@ export default function ContactGrid() {
             style={{
               left: `${(node.x / VB_W) * 100}%`,
               top: `${(node.y / VB_H) * 100}%`,
-              transform: `translate(-50%, -50%) ${isActive ? "scale(1.25)" : "scale(1)"}`,
+              transform: `translate(-50%, -50%) ${isActive ? "scale(1.15)" : "scale(1)"}`,
               background: node.filled
-                ? `radial-gradient(circle at 35% 30%, ${node.color}, rgba(${r},${g},${b},0.85))`
-                : "radial-gradient(circle at 35% 30%, #0a1830, #050b16)",
-              borderColor: `rgba(${r},${g},${b},${isActive ? 0.9 : 0.55})`,
+                ? `radial-gradient(circle at 32% 26%, rgba(255,255,255,0.35), rgba(${rgb},0.15) 30%, ${node.color} 75%)`
+                : `radial-gradient(circle at 32% 28%, rgba(${rgb},0.18), #050b16 70%)`,
+              borderColor: node.filled ? `rgba(255,255,255,${isActive ? 0.55 : 0.28})` : `rgba(${rgb}, ${isActive ? 0.9 : 0.4})`,
               boxShadow: isActive
-                ? `0 0 26px 6px rgba(${r},${g},${b},0.55)`
-                : `0 0 12px 2px rgba(${r},${g},${b},0.25)`,
+                ? `0 0 22px 4px rgba(${rgb},0.55)`
+                : `0 0 10px 1px rgba(${rgb},0.22)`,
             }}
           >
-            <Icon size={18} className="transition-colors" style={{ color: node.filled ? "#fff" : node.color }} />
+            <Icon size={19} className="transition-colors duration-300" style={{ color: node.filled ? "#fff" : node.color }} />
             <span
-              className="font-mono text-[8px] uppercase tracking-wider transition-colors"
-              style={{ color: node.filled ? "#fff" : node.color }}
+              className="font-mono text-[7.5px] uppercase tracking-wider transition-colors duration-300"
+              style={{ color: node.filled ? "rgba(255,255,255,0.9)" : "rgba(180,200,225,0.6)" }}
             >
               {node.label}
             </span>
