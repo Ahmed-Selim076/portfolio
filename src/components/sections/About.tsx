@@ -19,7 +19,7 @@ export default function About() {
           </Panel>
 
           <div className="grid grid-cols-4 gap-3 w-full max-w-xs">
-            {["React", "TS", ".NET", "SQL"].map((t) => (
+            {["Angular", "React", ".NET", "PostgreSQL"].map((t) => (
               <div
                 key={t}
                 className="aspect-square border border-border flex items-center justify-center text-[11px] font-mono text-text-secondary hover:text-primary-bright hover:border-primary hover:shadow-[0_0_16px_rgba(47,129,255,0.3)] transition-all"
@@ -42,17 +42,24 @@ export default function About() {
 
           <div className="space-y-4 text-text-secondary leading-relaxed">
             <p>
-              I&apos;m a self-taught full-stack developer from Egypt, passionate about
-              building real products that solve real problems. I work across the entire
-              stack — from database design and API architecture to pixel-perfect
-              frontends.
+              I&apos;m a full-stack developer and Computer &amp; Systems Engineering
+              student at Benha University, with close to two years of hands-on
+              experience building production-grade web applications independently —
+              from database schema and API design through to polished,
+              component-driven frontends.
             </p>
             <p>
-              I taught myself to code while studying Agricultural Engineering, driven
-              by curiosity and the desire to build things. That background taught me
-              to think systematically and learn fast.
+              I work primarily across Angular, React, and ASP.NET Core, and I care
+              about getting the fundamentals right: real authentication, clean
+              architecture, true multi-tenant data isolation, and real-time systems
+              that hold up under concurrent users — not just demos.
             </p>
-            <p>When I&apos;m not coding, I&apos;m probably thinking about a new project idea.</p>
+            <p>
+              I&apos;ve shipped three full-scale solo projects — a multi-tenant SaaS
+              platform, a real-time collaborative whiteboard, and a project
+              management tool — including a full security audit and remediation on
+              a live production deployment.
+            </p>
           </div>
         </div>
       </div>
