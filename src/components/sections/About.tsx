@@ -43,10 +43,10 @@ export default function About() {
           <div className="space-y-4 text-text-secondary leading-relaxed">
             <p>
               I&apos;m a full-stack developer and Computer &amp; Systems Engineering
-              student at Benha University, with close to two years of hands-on
-              experience building production-grade web applications independently —
-              from database schema and API design through to polished,
-              component-driven frontends.
+              student at Benha University, with hands-on experience building
+              production-grade web applications independently — from database
+              schema and API design through to polished, component-driven
+              frontends.
             </p>
             <p>
               I work primarily across Angular, React, and ASP.NET Core, and I care
