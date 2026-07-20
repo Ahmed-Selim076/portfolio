@@ -41,7 +41,7 @@ export default function Contact() {
 
         <div className="max-w-xl mx-auto text-left mb-16">
           <form onSubmit={handleSubmit} className="space-y-6">
-            <div>
+            <div className="relative group">
               <label htmlFor="name" className="sr-only">Name</label>
               <input
                 id="name"
@@ -49,10 +49,11 @@ export default function Contact() {
                 value={form.name}
                 onChange={(e) => setForm({ ...form, name: e.target.value })}
                 placeholder="Name"
-                className="w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 text-text-primary placeholder:text-text-secondary transition-colors focus-ring"
+                className="peer w-full bg-transparent border-b border-border outline-none py-3 text-text-primary placeholder:text-text-secondary"
               />
+              <span className="pointer-events-none absolute left-0 bottom-0 h-px w-full bg-primary-bright scale-x-0 origin-left transition-transform duration-300 ease-out peer-hover:scale-x-100 peer-focus:scale-x-100" />
             </div>
-            <div>
+            <div className="relative group">
               <label htmlFor="email" className="sr-only">Email</label>
               <input
                 id="email"
@@ -61,10 +62,11 @@ export default function Contact() {
                 value={form.email}
                 onChange={(e) => setForm({ ...form, email: e.target.value })}
                 placeholder="Email"
-                className="w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 text-text-primary placeholder:text-text-secondary transition-colors focus-ring"
+                className="peer w-full bg-transparent border-b border-border outline-none py-3 text-text-primary placeholder:text-text-secondary"
               />
+              <span className="pointer-events-none absolute left-0 bottom-0 h-px w-full bg-primary-bright scale-x-0 origin-left transition-transform duration-300 ease-out peer-hover:scale-x-100 peer-focus:scale-x-100" />
             </div>
-            <div>
+            <div className="relative group">
               <label htmlFor="message" className="sr-only">Message</label>
               <textarea
                 id="message"
@@ -73,8 +75,9 @@ export default function Contact() {
                 value={form.message}
                 onChange={(e) => setForm({ ...form, message: e.target.value })}
                 placeholder="Message"
-                className="w-full bg-transparent border-b border-border focus:border-primary outline-none py-3 text-text-primary placeholder:text-text-secondary transition-colors resize-none focus-ring"
+                className="peer w-full bg-transparent border-b border-border outline-none py-3 text-text-primary placeholder:text-text-secondary resize-none"
               />
+              <span className="pointer-events-none absolute left-0 bottom-0 h-px w-full bg-primary-bright scale-x-0 origin-left transition-transform duration-300 ease-out peer-hover:scale-x-100 peer-focus:scale-x-100" />
             </div>
 
             <div className="flex items-center gap-4 pt-2 flex-wrap">
