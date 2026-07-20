@@ -135,7 +135,6 @@ export const skills = {
 };
 
 export const stats = [
-  { value: 2, suffix: "+", label: "Years Experience" },
   { value: 3, suffix: "", label: "Full-Scale Projects" },
   { value: 140, suffix: "+", label: "REST Endpoints Shipped" },
 ];
