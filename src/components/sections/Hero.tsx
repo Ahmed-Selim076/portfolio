@@ -1,6 +1,5 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import Button from "../ui/Button";
-import { stats } from "../../data/projects";
 
 const Chip3D = lazy(() => import("../three/Chip3D"));
 
@@ -152,20 +151,6 @@ export default function Hero() {
             </Button>
           </div>
 
-          <div
-            className="flex items-center justify-center lg:justify-start gap-8 sm:gap-12"
-            style={{ animation: "revealUp 0.7s ease 0.64s both" }}
-          >
-            {stats.map((s) => (
-              <div key={s.label} className="text-center lg:text-left">
-                <p className="font-display text-2xl md:text-3xl font-bold text-primary-bright">
-                  {s.value}
-                  {s.suffix}
-                </p>
-                <p className="text-text-secondary text-xs md:text-sm mt-1">{s.label}</p>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Right: the 3D chip, reacts to mouse movement */}
